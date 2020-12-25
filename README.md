@@ -1,5 +1,7 @@
 # Twitter Breaking News on the Inky PHAT from Pimoroni
 
+![Image of The PHAT at Work](https://github.com/RFNajera/Inky-PHAT-Breaking-News/blob/main/breaking_news_inky.jpg)
+
 Putting Twitter breaking news on display every few minutes on the Pimoroni Inky PHAT took some code modification, but what else is new, right?
 
 ## What you need
