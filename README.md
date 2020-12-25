@@ -99,6 +99,28 @@ python3 breaking.py
 ```
 If everything is working, the Inky PHAT will refresh and show the latest tweet from the source you chose. Note that the terminal will also show that message.
 
+# Using Crontab to run the script every few minutes
+The very last thing to do is to set up a cron job so your script will run as often as you want. Remember that the AP tweets out a lot, so might miss some tweets here and there if your time interval is too long. I have mine set at every three minutes, and it seems to work well. I also set up a job from the Inky examples called “clean.py” to clear the screen every month in case there is “ghosting,” which is a thing with e-paper displays like these.
+* Back at the terminal type:
+```python
+chmod +x breaking.py
+```
+This makes the script executable without your input. Cron will do that for you next. (Make sure you're in the folder for the script when you do this.)
+
+* Now, let's write the cron job script:
+```python
+crontab -e
+```
+You will be given the choice of which editor to use. Keep it simple and use nano.
+* This is the script I used after following [this example](https://phoenixnap.com/kb/set-up-cron-job-linux).
+```python
+# Run the clean-up at midnight on the first day of each month
+0 0 1 * * python3 /inky-phat/examples/clean.py
+
+# Run the breaking news every three minutes
+*/3 * * * * python3 /home/pi/Inky-PHAT-Breaking-News/breaking.py
+```
+
 ## Didn't Work?
 * If it didn't work, you might want to make sure that you have all the necessary modules installed. Note that I'm using PIL (Python Image Library), font_hanken_grotesk, and Tweepy.
 * Note that I am not a professional Python coder, and that I adapted a lot of the code for these from other sources. I tried to annotate the code as much as possible to show you how it is working.
