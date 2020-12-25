@@ -61,4 +61,43 @@ Take the power cord out and install the Inky PHAT.
 curl https://get.pimoroni.com/inky | bash
 ```
 This may take a few minutes. Be patient.
-* You can see in the instructions that you can play with some of the examples included in installation.
+* You can see in the instructions that you can play with some of the examples included in installation. This will help you test the software and make sure you have everything set up and plugged in right. If you need to install some more packages, make sure you do, of course.
+
+## Get Twitter API Keys
+* Go to [Twitter's Developer Site](https://developer.twitter.com/) and sign up for a developer account. Make sure you answer all the questions to the best of your ability. It may take a few hours for them to give you an account. Once you have the account, register your app.
+* I told Twitter that this is just a hobby, because it is. Don't lie! If they catch you using this for some commercial enterprise, and you said you were doing hobby work, you'll lose your ability to use the API.
+
+## Create a Python Script Like the “config.py” File in This Repository, or Clone It
+* Type the following in the terminal to create the file:
+```python
+sudo nano config.py
+```
+Copy the contents of the .py file in this repository, replacing the consumer key and secret and the access key and secret that you got when you signed up for access to the Tiwtter API.
+* Hit control+X to exit, and make sure you save it.
+
+## Create a Python Script Like the “breaking.py” File for Your Breaking News
+* Type the command above to create another script. I named mine “breaking.py”.
+```python
+sudo nano breaking.py
+```
+* Change anything in there you want to change. I use the [Associated Press' Twitter Stream](https://twitter.com/ap) to get the latest tweet, and I filter out retweets and replies. You may want to use BBC News, NBC, ABC, CNN, Fox, etc. It's up to you.
+* Hit control+X to exist.
+
+## You'll Need Tweepy
+* As you can see in the scripts, you need to install Tweepy, so back at the terminal, type:
+```python
+sudo pip install tweepy
+```
+* You can read all about Tweepy on [its documentation site](http://docs.tweepy.org/en/latest/install.html).
+
+## Try Out Your Script
+* Go ahead and try out your breaking news script:
+```python
+python3 breaking.py
+```
+If everything is working, the Inky PHAT will refresh and show the latest tweet from the source you chose. Note that the terminal will also show that message.
+
+## Didn't Work?
+* If it didn't work, you might want to make sure that you have all the necessary modules installed. Note that I'm using PIL (Python Image Library), font_hanken_grotesk, and Tweepy.
+* Note that I am not a professional Python coder, and that I adapted a lot of the code for these from other sources. I tried to annotate the code as much as possible to show you how it is working.
+* There is plenty of help online if you need it.
