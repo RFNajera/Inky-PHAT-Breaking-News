@@ -125,3 +125,17 @@ You will be given the choice of which editor to use. Keep it simple and use nano
 * If it didn't work, you might want to make sure that you have all the necessary modules installed. Note that I'm using PIL (Python Image Library), font_hanken_grotesk, and Tweepy.
 * Note that I am not a professional Python coder, and that I adapted a lot of the code for these from other sources. I tried to annotate the code as much as possible to show you how it is working.
 * There is plenty of help online if you need it.
+
+## A Few Words of Warning
+* Don't skimp and use a power source lower than 5V. The Raspberry Pi will sense a drop in voltage and start misbehaving.
+* Make sure to shutdown or reboot your Raspberry Pi, not just disconnect it. Use:
+```python
+sudo reboot
+```
+Or
+```python
+sudo shutdown -h
+```
+* Your script might get hung up if something goes wrong. Don't just power down the Raspberry Pi and start again. Close the terminal you're working on and start another. Then shutdown from there.
+* Be careful of the timing of your cron jobs. I have mine set at 3 minutes, which you know will cause an issue at the midnight of the clean job. (It's a math problem. Think about it.) I also have another job to run at the 5 minute intervals of the hour, which causes a conflict at 15, 30, 45 and 60. (Now do you get it?)
+* Again, there is plenty of help online if you need it.
