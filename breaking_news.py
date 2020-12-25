@@ -1,14 +1,25 @@
 #!/usr/bin/python3
 
+#-----------------------------------------------------------------------
+# Code to pull the latest breaking news tweet by the Associated Press from Twitter and display
+# it in Pimoroni InkyPHAT display with code adapted from:
+# Dan Aldred: https://github.com/TeCoEd/Yoda-Twitter-Streamer
+# Sam Hector: https://github.com/samhector/InkyTwitterTrends
+# Adam Bowie: https://www.adambowie.com/blog/2019/09/news-twitter-feeds-and-inky-what-e-ink-display/
+# Earth Data Science: https://www.earthdatascience.org/courses/use-data-open-source-python/intro-to-apis/twitter-data-in-python/
+# Pimoroni Inky PHAT Getting Started:
+# https://learn.pimoroni.com/tutorial/sandyj/getting-started-with-inky-phat
+#-----------------------------------------------------------------------
+
 import sys
 sys.path.append(".")
-import argparse
-from PIL import Image, ImageFont, ImageDraw
-from font_hanken_grotesk import HankenGroteskBold, HankenGroteskMedium
-from inky import InkyPHAT
-import os
-import config
-import tweepy as tw
+import argparse # For parsing arguments: https://docs.python.org/3/howto/argparse.html
+from PIL import Image, ImageFont, ImageDraw # Python Image Library
+from font_hanken_grotesk import HankenGroteskBold, HankenGroteskMedium # For the fonts
+from inky import InkyPHAT # For using the PHAT
+import os # To interface with the operating system
+import config # Where I stored the Twitter API keys
+import tweepy as tw # Tweepy helps get data from Twitter: http://docs.tweepy.org/en/latest/
 
 #-----------------------------------------------------------------------
 # Twitter API object
@@ -21,7 +32,7 @@ api = tw.API(twitter) # Creates api with all the information for accessing the A
 # Inky PHAT screen information
 #-----------------------------------------------------------------------
 
-colour="red"
+colour="red" # There is also a yellow version: https://www.adafruit.com/product/3933 and a black/white version
 inky_display = InkyPHAT(colour)
 scale_size = 1
 padding = 0
@@ -35,6 +46,7 @@ font_bold = ImageFont.truetype(HankenGroteskBold, 14) # Set the font for header
 
 #-----------------------------------------------------------------------
 # Set the reflow to make sure the text fits into the screen
+# Dan Aldred uses a better way that I couldn't just quite get going: https://github.com/TeCoEd/Yoda-Twitter-Streamer
 #-----------------------------------------------------------------------
 
 def reflow_tweet(quote, width, font):
@@ -67,7 +79,7 @@ search_term = "from:ap" + " -filter:retweets" + " -filter:replies" # I'm using @
 tweets = tw.Cursor(api.search,
                    q = search_term,
                    lang="en",
-                   result_type = "recent").items(1) #Return only one, the latest one
+                   result_type = "recent").items(1) # Return only one, the latest one
 
 # Iterate and print tweets
 for tweet in tweets:
@@ -77,7 +89,7 @@ for tweet in tweets:
 # Make the tweet fit into the screen
 #--------------------------------------------------------------------
 
-reflowed_tweet = reflow_tweet(tweet.text, inky_display.WIDTH, font)
+reflowed_tweet = reflow_tweet(tweet.text, inky_display.WIDTH, font) # Formating the tweet text
 
 #---------------------------------------------------------------------
 # Display the tweets
