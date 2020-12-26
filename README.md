@@ -99,7 +99,7 @@ python3 breaking.py
 ```
 If everything is working, the Inky PHAT will refresh and show the latest tweet from the source you chose. Note that the terminal will also show that message.
 
-# Using Crontab to run the script every few minutes
+## Using Crontab to run the script every few minutes
 The very last thing to do is to set up a cron job so your script will run as often as you want. Remember that the AP tweets out a lot, so might miss some tweets here and there if your time interval is too long. I have mine set at every three minutes, and it seems to work well. I also set up a job from the Inky examples called “clean.py” to clear the screen every month in case there is “ghosting,” which is a thing with e-paper displays like these.
 * Back at the terminal type:
 ```python
