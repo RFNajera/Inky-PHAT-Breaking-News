@@ -83,7 +83,7 @@ Copy the contents of the .py file in this repository, replacing the consumer key
 sudo nano breaking.py
 ```
 * Change anything in there you want to change. I use the [Associated Press' Twitter Stream](https://twitter.com/ap) to get the latest tweet, and I filter out retweets and replies. You may want to use BBC News, NBC, ABC, CNN, Fox, etc. It's up to you.
-* Hit control+X to exist.
+* Hit control+X to exit.
 
 ## You'll Need Tweepy
 * As you can see in the scripts, you need to install Tweepy, so back at the terminal, type:
